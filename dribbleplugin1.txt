@@ -1,0 +1,53 @@
+$(function(){
+	alert("loaded");
+	$.dribbble.getShot("23123",function(data){
+		var wrapperDiv= $("<div/>", {
+
+				});
+				var title= $("<h2/>", {
+					text: data.title
+				});
+				var img= $("<img/>", {
+					alt: data.title,
+					src: data.image_url
+
+				});
+				var user =$("<a/>", {
+					text: data.player.name,
+					href: data.player.url
+				});
+				wrapperDiv
+				.append(title)
+				.append(img)
+				.append(user);
+				$("body").append(wrapperDiv);
+			
+	});
+	$.dribbble.getShots("2",function(data){
+		for (var i=0; i< data.shots.length; i++){
+		var shot=data.shots[i];
+		var wrapperDiv= $("<div/>", {
+
+				});
+				var title= $("<h2/>", {
+					text: shot.title
+				});
+				var img= $("<img/>", {
+					alt: shot.title,
+					src: shot.image_url
+
+				});
+				var user =$("<a/>", {
+					text: shot.player.name,
+					href: shot.player.url
+				});
+				wrapperDiv
+				.append(title)
+				.append(img)
+				.append(user);
+				$("body").append(wrapperDiv);   
+
+	}
+	});
+
+});
